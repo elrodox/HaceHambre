@@ -1,14 +1,16 @@
-package cl.uv.ici.tallerdeandroid.hacehambre.model;
+package cl.uv.ici.tallerdeandroid.hacehambre.model.combo;
 
 import java.io.Serializable;
 import java.util.Calendar;
 
-import cl.uv.ici.tallerdeandroid.hacehambre.interfaces.ICombo;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.food.Bread;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.food.Meat;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.food.Vegetal;
 
-public class Combo  implements ICombo, Serializable {
+public class Combo implements ICombo, Serializable {
 
     private int comboId;
-    private Vegetal [] vegetales = new Vegetal[2];
+    private Vegetal[] vegetales = new Vegetal[2];
     private Meat meat;
     private Bread bread;
     private int imageId;

@@ -1,25 +1,50 @@
-package cl.uv.ici.tallerdeandroid.hacehambre;
+package cl.uv.ici.tallerdeandroid.hacehambre.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity
+import java.util.ArrayList;
+import java.util.Date;
+
+import cl.uv.ici.tallerdeandroid.hacehambre.R;
+import cl.uv.ici.tallerdeandroid.hacehambre.listadapters.PedidoListAdapter;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.Pedido;
+
+public class AdminHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public ArrayList<Pedido> pedidos = new ArrayList();
+
+    protected void loadPedidosListView(){
+        pedidos.add(new Pedido(1,new Date()));
+        pedidos.add(new Pedido(2,new Date()));
+        pedidos.add(new Pedido(3,new Date()));
+
+        ListView pedidosListView = (ListView) findViewById(R.id.listViewPedidos);
+
+        pedidosListView.setAdapter(new PedidoListAdapter(getBaseContext(), pedidos));
+
+//        menusList = (ListView)findViewById(R.id.menus_list);
+//        menusList.setAdapter(new FoodListAdapter(getBaseContext(),foods));
+//        menusList.setOnItemClickListener(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,15 +65,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        loadPedidosListView();
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
+            Log.e("EXIT", "start...");
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+//            super.onBackPressed();
+            Log.e("EXIT", "exiting...");
+
         }
     }
 

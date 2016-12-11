@@ -1,4 +1,4 @@
-package cl.uv.ici.tallerdeandroid.hacehambre.model;
+package cl.uv.ici.tallerdeandroid.hacehambre.model.employee;
 
 
 public class Employee {

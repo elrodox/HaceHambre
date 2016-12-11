@@ -1,21 +1,26 @@
-package cl.uv.ici.tallerdeandroid.hacehambre.model;
+package cl.uv.ici.tallerdeandroid.hacehambre.model.food;
 
 import java.io.Serializable;
 
-public class Food implements Serializable {
+import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchase;
+import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchaseDecorator;
+
+public class FoodDecorator extends IPurchaseDecorator implements IFood, Serializable {
 
     private String name;
     private int cost;
     private int weight;
     private String type;
 
-    public Food(String name, int cost, String type){
+    public FoodDecorator(String name, int cost, String type, IPurchase decoratedCombo){
+        super(decoratedCombo);
         this.name = name;
         this.cost = cost;
         this.type = type;
     }
 
-    public Food(String name, int cost, int weight, String type) {
+    public FoodDecorator(String name, int cost, int weight, String type, IPurchase decoratedCombo) {
+        super(decoratedCombo);
         this.name = name;
         this.cost = cost;
         this.weight = weight;
