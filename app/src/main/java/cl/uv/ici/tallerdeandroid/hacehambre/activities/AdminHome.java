@@ -33,12 +33,8 @@ public class AdminHome extends AppCompatActivity
         pedidos.add(new Pedido(3,new Date()));
 
         ListView pedidosListView = (ListView) findViewById(R.id.listViewPedidos);
-
         pedidosListView.setAdapter(new PedidoListAdapter(getBaseContext(), pedidos));
 
-//        menusList = (ListView)findViewById(R.id.menus_list);
-//        menusList.setAdapter(new FoodListAdapter(getBaseContext(),foods));
-//        menusList.setOnItemClickListener(this);
     }
 
     @Override
@@ -76,7 +72,7 @@ public class AdminHome extends AppCompatActivity
             Log.e("EXIT", "start...");
             drawer.closeDrawer(GravityCompat.START);
         } else {
-//            super.onBackPressed();
+            super.onBackPressed();
             Log.e("EXIT", "exiting...");
 
         }

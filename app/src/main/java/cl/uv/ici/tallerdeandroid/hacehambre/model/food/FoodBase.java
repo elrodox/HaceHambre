@@ -1,5 +1,7 @@
 package cl.uv.ici.tallerdeandroid.hacehambre.model.food;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchase;
@@ -28,7 +30,9 @@ public class FoodBase implements IFood, IPurchase, Serializable {
         return name;
     }
 
-    public int getCost() {
+    @Override
+    public int getCost(){
+        Log.d("getCost", "FoodBase");
         return cost;
     }
 

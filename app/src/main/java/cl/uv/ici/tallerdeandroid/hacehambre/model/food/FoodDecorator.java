@@ -1,5 +1,7 @@
 package cl.uv.ici.tallerdeandroid.hacehambre.model.food;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchase;
@@ -31,8 +33,10 @@ public class FoodDecorator extends IPurchaseDecorator implements IFood, Serializ
         return name;
     }
 
+    @Override
     public int getCost() {
-        return cost;
+        Log.d("getCost", "FoodDecorator");
+        return (decoratedPurchase!=null ? decoratedPurchase.getCost() : 0) + cost;
     }
 
     public int getWeight() {

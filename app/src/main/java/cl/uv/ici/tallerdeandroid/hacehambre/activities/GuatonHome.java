@@ -1,38 +1,46 @@
 package cl.uv.ici.tallerdeandroid.hacehambre.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 import cl.uv.ici.tallerdeandroid.hacehambre.R;
-import cl.uv.ici.tallerdeandroid.hacehambre.dao.FoodDao;
-import cl.uv.ici.tallerdeandroid.hacehambre.dao.IFoodDao;
-import cl.uv.ici.tallerdeandroid.hacehambre.listadapters.FoodListAdapter;
-import cl.uv.ici.tallerdeandroid.hacehambre.model.user.IUser;
+import cl.uv.ici.tallerdeandroid.hacehambre.listadapters.PedidoListAdapter;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.Pedido;
 
-public class ClientHome extends AppCompatActivity
-        implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class GuatonHome extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    public ArrayList<Pedido> pedidos = new ArrayList();
+
+    protected void loadPedidosListView(){
+        pedidos.add(new Pedido(1,new Date()));
+        pedidos.add(new Pedido(2,new Date()));
+        pedidos.add(new Pedido(3,new Date()));
+
+        ListView pedidosListView = (ListView) findViewById(R.id.listViewPedidos);
+        pedidosListView.setAdapter(new PedidoListAdapter(getBaseContext(), pedidos));
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_home);
+        setContentView(R.layout.activity_guaton_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -54,31 +62,19 @@ public class ClientHome extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        ////////////////////////////
-
-        Button botonPrueba = (Button)findViewById(R.id.buttonComprarCombos);
-        botonPrueba.setOnClickListener(this);
-
-        Bundle bundleObject = getIntent().getExtras();
-        IUser user = (IUser) bundleObject.getSerializable("user");
-
-        TextView emailUserTextView = (TextView) findViewById(R.id.textViewUserEmail);
-        if(emailUserTextView==null){
-            Log.e("emailUserTextView", "NULL");
-        }else{
-            emailUserTextView.setText(user.getEmail());
-        }
-
+        loadPedidosListView();
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
+            Log.e("EXIT", "start...");
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            Log.e("EXIT", "exiting...");
+
         }
     }
 
@@ -127,16 +123,5 @@ public class ClientHome extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonComprarCombos:
-                Log.i("Button","ComprarCombos");
-                Intent homeIntent = new Intent(ClientHome.this, PurchaseFoodActivity.class);
-                startActivity(homeIntent);
-                break;
-        }
     }
 }

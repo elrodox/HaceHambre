@@ -14,6 +14,11 @@ public class Meat extends FoodDecorator implements Serializable {
         this.origin = origin;
         this.fatIndex = fatIndex;
     }
+    public Meat(String name, int cost, int weight, String type, String origin, double fatIndex){
+        super(name, cost, weight, type, null);
+        this.origin = origin;
+        this.fatIndex = fatIndex;
+    }
 
     public String getOrigin() {
         return origin;

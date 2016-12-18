@@ -5,5 +5,6 @@ package cl.uv.ici.tallerdeandroid.hacehambre.model.user;
  */
 public enum UserType {
     ADMIN,
-    CLIENT
+    CLIENT,
+    GUATON
 }

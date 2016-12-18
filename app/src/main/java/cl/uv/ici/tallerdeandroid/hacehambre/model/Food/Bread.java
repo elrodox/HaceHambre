@@ -16,6 +16,12 @@ public class Bread extends FoodDecorator implements Serializable {
         this.wholemeal = wholemeal;
     }
 
+    public Bread(String name, int costo, int peso, String tipo, String originCountry, boolean wholemeal){
+        super(name, costo, peso, tipo, null);
+        this.originCountry = originCountry;
+        this.wholemeal = wholemeal;
+    }
+
     public String getOriginCountry() {
         return originCountry;
     }

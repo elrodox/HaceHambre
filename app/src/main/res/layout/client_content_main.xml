@@ -27,12 +27,12 @@
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comprar producto"
-        android:id="@+id/comprarProductoBtn"
-        android:layout_marginTop="70dp"
-        android:layout_below="@+id/buttonComprarCombos"
-        android:layout_centerHorizontal="true" />
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Comprar producto"-->
+        <!--android:id="@+id/comprarProductoBtn"-->
+        <!--android:layout_marginTop="70dp"-->
+        <!--android:layout_below="@+id/buttonComprarProducto"-->
+        <!--android:layout_centerHorizontal="true" />-->
 </RelativeLayout>

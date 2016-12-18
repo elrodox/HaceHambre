@@ -22,6 +22,9 @@ public class UserFactory {
             case CLIENT:
                 user = new ClientUser(email, password);
                 break;
+            case GUATON:
+                user = new GuatonUser(email, password);
+                break;
         }
         return user;
     }
