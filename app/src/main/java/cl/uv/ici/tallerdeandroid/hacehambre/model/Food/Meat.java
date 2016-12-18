@@ -2,23 +2,17 @@ package cl.uv.ici.tallerdeandroid.hacehambre.model.food;
 
 import java.io.Serializable;
 
-import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchase;
-
-public class Meat extends FoodDecorator implements Serializable {
+public class Meat extends Food implements Serializable {
 
     private String origin;
     private double fatIndex;
 
-    public Meat(String name, int cost, int weight, String type, String origin, double fatIndex, IPurchase decoratedCombo){
-        super(name, cost, weight, type, decoratedCombo);
-        this.origin = origin;
-        this.fatIndex = fatIndex;
-    }
     public Meat(String name, int cost, int weight, String type, String origin, double fatIndex){
-        super(name, cost, weight, type, null);
+        super(name, cost, weight, type);
         this.origin = origin;
         this.fatIndex = fatIndex;
     }
+
 
     public String getOrigin() {
         return origin;

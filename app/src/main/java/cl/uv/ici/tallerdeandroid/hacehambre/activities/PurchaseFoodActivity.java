@@ -15,8 +15,9 @@ import cl.uv.ici.tallerdeandroid.hacehambre.dao.FoodDao;
 import cl.uv.ici.tallerdeandroid.hacehambre.dao.IFoodDao;
 import cl.uv.ici.tallerdeandroid.hacehambre.listadapters.ChoseFoodListAdapter;
 import cl.uv.ici.tallerdeandroid.hacehambre.listadapters.FoodListAdapter;
-import cl.uv.ici.tallerdeandroid.hacehambre.model.food.DrinkBase;
-import cl.uv.ici.tallerdeandroid.hacehambre.model.food.FoodDecorator;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.combo.ComboDirector;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.combo.ICombo;
+import cl.uv.ici.tallerdeandroid.hacehambre.model.food.Drink;
 import cl.uv.ici.tallerdeandroid.hacehambre.model.food.IFood;
 import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchase;
 import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchaseDecorator;
@@ -69,19 +70,13 @@ public class PurchaseFoodActivity extends AppCompatActivity {
             totalCostTextView.setText(""+0);
             return;
         }
-        IPurchase purchase = new DrinkBase("Coca-Cola Pequeña", 750, 500, "bebida", "cc");
-        IPurchaseDecorator purchaseDecorator = (FoodDecorator) choseFoods.get(0);
-        purchaseDecorator.setDecoratedPurchase(purchase);
-        IPurchaseDecorator purchaseDecoratorIterator;
-
-        for(int i=1; i<choseFoods.size(); i++){
-            purchaseDecoratorIterator = (FoodDecorator) choseFoods.get(i);
-            purchaseDecoratorIterator.setDecoratedPurchase(purchaseDecorator);
-            purchaseDecorator = purchaseDecoratorIterator;
+        ICombo combo = ComboDirector.getDrinkComboBuilder().getCombo();
+        for(IFood food : choseFoods){
+            combo.addFood(food);
         }
 
         TextView totalCostTextView = (TextView) findViewById(R.id.purchase_textView_costoTotal);
-        totalCostTextView.setText(""+purchaseDecorator.getCost());
+        totalCostTextView.setText(""+combo.getCost());
 
     }
 

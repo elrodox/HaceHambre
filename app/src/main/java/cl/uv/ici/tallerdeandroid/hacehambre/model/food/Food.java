@@ -5,24 +5,21 @@ import android.util.Log;
 import java.io.Serializable;
 
 import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchase;
-import cl.uv.ici.tallerdeandroid.hacehambre.purchaseDecorator.IPurchaseDecorator;
 
-public class FoodDecorator extends IPurchaseDecorator implements IFood, Serializable {
+public class Food implements IFood, Serializable {
 
     private String name;
     private int cost;
     private int weight;
     private String type;
 
-    public FoodDecorator(String name, int cost, String type, IPurchase decoratedCombo){
-        super(decoratedCombo);
+    public Food(String name, int cost, String type){
         this.name = name;
         this.cost = cost;
         this.type = type;
     }
 
-    public FoodDecorator(String name, int cost, int weight, String type, IPurchase decoratedCombo) {
-        super(decoratedCombo);
+    public Food(String name, int cost, int weight, String type) {
         this.name = name;
         this.cost = cost;
         this.weight = weight;
@@ -34,9 +31,9 @@ public class FoodDecorator extends IPurchaseDecorator implements IFood, Serializ
     }
 
     @Override
-    public int getCost() {
-        Log.d("getCost", "FoodDecorator");
-        return (decoratedPurchase!=null ? decoratedPurchase.getCost() : 0) + cost;
+    public int getCost(){
+        Log.d("getCost", "Food");
+        return cost;
     }
 
     public int getWeight() {

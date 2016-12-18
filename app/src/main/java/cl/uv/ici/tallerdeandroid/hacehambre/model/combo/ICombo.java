@@ -1,12 +1,16 @@
 package cl.uv.ici.tallerdeandroid.hacehambre.model.combo;
 
+import java.util.List;
+
+import cl.uv.ici.tallerdeandroid.hacehambre.model.food.IFood;
+
 /**
  * Created by Rodolfo on 14/11/2016.
  */
 public interface ICombo {
-    public int calculateCost();
-    public String getComboComponents();
-
-    public int getComboId();
-    public int getImageId();
+    int getCost();
+    List<IFood> getFoods();
+    void addFood(IFood food);
+//    int getComboId();
+//    int getImageId();
 }
