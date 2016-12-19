@@ -1,5 +1,7 @@
 package cl.uv.ici.tallerdeandroid.hacehambre.dao;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 
 import cl.uv.ici.tallerdeandroid.hacehambre.model.food.Bread;
@@ -10,10 +12,12 @@ import cl.uv.ici.tallerdeandroid.hacehambre.model.food.Vegetal;
 /**
  * Created by Rodolfo on 11/12/2016.
  */
-public class FoodDao implements IFoodDao {
-    private static IFoodDao ourInstance = new FoodDao();
+public class FoodDao implements IDao<IFood> {
 
-    public static IFoodDao getInstance() {
+
+    private static IDao ourInstance = new FoodDao();
+
+    public static IDao getInstance() {
         return ourInstance;
     }
 
@@ -42,5 +46,10 @@ public class FoodDao implements IFoodDao {
     @Override
     public IFood findByName(String name) {
         return null;
+    }
+
+    @Override
+    public void save(IFood model) {
+
     }
 }

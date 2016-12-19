@@ -3,6 +3,7 @@ package cl.uv.ici.tallerdeandroid.hacehambre.activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -34,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cl.uv.ici.tallerdeandroid.hacehambre.R;
+import cl.uv.ici.tallerdeandroid.hacehambre.dao.UserAuth;
 import cl.uv.ici.tallerdeandroid.hacehambre.model.user.IUser;
 import cl.uv.ici.tallerdeandroid.hacehambre.model.user.UserFactory;
 import cl.uv.ici.tallerdeandroid.hacehambre.model.user.UserType;
@@ -49,10 +51,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+//    private static Context context;
 
     /**
      * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
+     * TODO: removeFood after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "admin:123", "client:123", "guaton:123"
@@ -71,6 +74,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        LoginActivity.context = getApplicationContext();
+
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -314,30 +319,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected IUser doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-//            try {
-//                // Simulate network access.
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                return null;
-//            }
-            IUser user = null;
-//            String userTypeFromBackend = "client";
+            IUser user = UserAuth.auth(mEmail, mPassword);
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail) && pieces[1].equals(mPassword)) {
-                    if (mEmail.equals("admin")){
-                        user = UserFactory.createUser(mEmail, mPassword, UserType.ADMIN);
-                    }
-                    if (mEmail.equals("client")){
-                        user = UserFactory.createUser(mEmail, mPassword, UserType.CLIENT);
-                    }
-                    if (mEmail.equals("guaton")){
-                        user = UserFactory.createUser(mEmail, mPassword, UserType.GUATON);
-                    }
-                    break;
-                }
-            }
+
+
+//            for (String credential : DUMMY_CREDENTIALS) {
+//                String[] pieces = credential.split(":");
+//                if (pieces[0].equals(mEmail) && pieces[1].equals(mPassword)) {
+//                    if (mEmail.equals("admin")){
+//                        user = UserFactory.createUser(mEmail, mPassword, UserType.ADMIN);
+//                    }
+//                    if (mEmail.equals("client")){
+//                        user = UserFactory.createUser(mEmail, mPassword, UserType.CLIENT);
+//                    }
+//                    if (mEmail.equals("guaton")){
+//                        user = UserFactory.createUser(mEmail, mPassword, UserType.GUATON);
+//                    }
+////                    UserAuth.createUser("Nombre", user.getEmail(), user.getPassword());
+//                    break;
+//                }
+//            }
             return user;
         }
 

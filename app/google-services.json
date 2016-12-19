@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "136808070363",
+    "firebase_url": "https://hacehambre-3d913.firebaseio.com",
+    "project_id": "hacehambre-3d913",
+    "storage_bucket": "hacehambre-3d913.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136808070363:android:6f657c5b5bf44fde",
+        "android_client_info": {
+          "package_name": "cl.uv.ici.tallerdeandroid.hacehambre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136808070363-5tpfigfeas45ref8l5ksgj867sk5sfo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIjG0JXlbMy6gknHnm13IzUa-XcLzVHM0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

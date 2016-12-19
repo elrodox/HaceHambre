@@ -7,15 +7,16 @@ import cl.uv.ici.tallerdeandroid.hacehambre.model.food.IFood;
 /**
  * Created by Rodolfo on 11/12/2016.
  */
-public interface IFoodDao {
-    ArrayList<IFood> findAll();
-    IFood findById(int id);
-    IFood findByName(String name);
+public interface IDao<T> {
+    ArrayList<T> findAll();
+    T findById(int id);
+    T findByName(String name);
+    void save(T model);
 
 //    class Singleton {
-//        public static IFoodDao instance(Class<? extends IFoodDao> daoClass) {
+//        public static IDao instance(Class<? extends IDao> daoClass) {
 //            try {
-//                return (IFoodDao) daoClass.getField("ourInstance").get(null);
+//                return (IDao) daoClass.getField("ourInstance").get(null);
 //            } catch (Exception e){
 //                e.printStackTrace();
 //                return null;

@@ -1,5 +1,7 @@
 package cl.uv.ici.tallerdeandroid.hacehambre.model.user;
 
+import java.util.Map;
+
 /**
  * Created by Rodolfo on 08/12/2016.
  */
@@ -29,5 +31,9 @@ abstract class User implements IUser{
         return password;
     }
 
+    @Override
+    public Map<String, Object> toMap(){
+        return null;
+    }
 
 }

@@ -15,13 +15,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import cl.uv.ici.tallerdeandroid.hacehambre.R;
-import cl.uv.ici.tallerdeandroid.hacehambre.dao.FoodDao;
-import cl.uv.ici.tallerdeandroid.hacehambre.dao.IFoodDao;
-import cl.uv.ici.tallerdeandroid.hacehambre.listadapters.FoodListAdapter;
 import cl.uv.ici.tallerdeandroid.hacehambre.model.user.IUser;
 
 public class ClientHome extends AppCompatActivity

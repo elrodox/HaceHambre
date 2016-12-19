@@ -35,4 +35,9 @@ public class Combo implements ICombo, Serializable {
     public void addFood(IFood food) {
         foods.add(food);
     }
+
+    @Override
+    public void removeFood(IFood food){
+        foods.remove(food);
+    }
 }

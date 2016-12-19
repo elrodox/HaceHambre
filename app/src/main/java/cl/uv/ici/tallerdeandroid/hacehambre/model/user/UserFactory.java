@@ -12,21 +12,23 @@ public class UserFactory {
 //
 //    private UserFactory() {
 //    }
-
+    private static IUser currentUser = null;
     public static IUser createUser(String email, String password, UserType userType){
-        IUser user = null;
         switch (userType){
             case ADMIN:
-                user = new AdminUser(email, password);
+                currentUser = new AdminUser(email, password);
                 break;
             case CLIENT:
-                user = new ClientUser(email, password);
+                currentUser = new ClientUser(email, password);
                 break;
             case GUATON:
-                user = new GuatonUser(email, password);
+                currentUser = new GuatonUser(email, password);
                 break;
         }
-        return user;
+        return currentUser;
     }
 
+    public static IUser getCurrentUser() {
+        return currentUser;
+    }
 }

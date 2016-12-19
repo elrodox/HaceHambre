@@ -11,6 +11,5 @@ public interface ICombo {
     int getCost();
     List<IFood> getFoods();
     void addFood(IFood food);
-//    int getComboId();
-//    int getImageId();
+    void removeFood(IFood choseFood);
 }
